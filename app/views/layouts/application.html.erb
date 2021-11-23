@@ -12,53 +12,61 @@
 
   <body>
       <header>
-       <% if user_signed_in? %>
-       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-       </li>
-       <li>
-        <%= link_to 'マイページ', user_path(current_user.id) %>
-       </li>
-       <% else %>
-       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-       </li>
-       <li>
-        <%= link_to "ログイン", new_user_session_path %>
-       </li>
-       <% end %>
-       <%= yield %>
+       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+         <a class="navbar-brand" href="/">
+          <span>Bookers</span>
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expand="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+           <li>
+            <a class="fas fa-home nav-link text-light" href="/">
+             Home
+            </a>
+           </li>
+           <% if user_signed_in? %>
+           <li>
+            <a class="fas fa-users nav-link text-light" href="/users">
+             Users
+            </a>
+           </li>
+           <li>
+            <a class="fas fa-book-open nav-link text-light" href="/books">
+             Books
+            </a>
+           </li>
+           <li>
+            <a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
+             Log out
+            </a>
+           </li>
+           <% else %>
+           <li>
+            <a class="fas fa-link nav-link text-light" href="/home/about">
+             About
+            </a>
+           </li>
+           <li>
+            <a class="fas fa-user-plus nav-link text-light" href="/users/sign_up">
+             Sign up
+            </a>
+           </li>
+           <li>
+            <a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in">
+             Log in
+            </a>
+           </li>
+           <% end %>
+          </ul>
+         </div>
+        </div>
+       </nav>
       </header>
-      
-      <main>
-          <p></p>
-          <div class="container px-5 px-sm-0">
-              <div class="row">
-                  <div class="col-md-3">
-                      <h2>User info</h2>
-                      <img class=attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg">
-                      <table class="table">
-                          <tbody>
-                              <tr></tr>
-                              <tr>
-                                  <th>name</th>
-                                  <th></th>
-                              </tr>
-                              <tr>
-                                  <th>introduction</th>
-                                  <th></th>
-                              </tr>
-                          </tbody>
-                      </table>
-                      <div class="row">
-                          <a class="" href=""></a>
-                      </div>
-                      <h2 class="mt-3">New book</h2>
-                      <form></form>
-                  </div>
-                  <div class="col-md-8 offset-md-1"></div>
-              </div>
-          </div>
+      <main class="mb-auto">
+      <%= yield %>
       </main>
       <footer>
           <div class="container mt-5">
@@ -71,4 +79,3 @@
       </footer>
   </body>
 </html>
-
