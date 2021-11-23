@@ -1,0 +1,19 @@
+<% @books.each do |book| %>
+<div>
+  <%= attachment_image_tag book, :book %>
+  <p>投稿ユーザー画像: <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+</p>
+    
+    <% if @user.id == current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+    <% end %>
+
+  
+  
+  <%= link_to book_path(book.id) do %>
+  <p>Title:<%= book.title %></p>
+  <% end %>
+  <p>Opinion:<%= book.body %></p>
+</div>
+<% end %>
+
