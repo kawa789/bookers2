@@ -3,7 +3,7 @@
  <label for="inputName">Name</label>
  <%= f.text_field :name, autofocus: true, id:"inputName"%>
  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
- <label for="inputImage">ProfileImage</label>
+ <label for="inputImage">Image</label>
  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
  <%= f.submit "Update User" %>
 <% end %>
