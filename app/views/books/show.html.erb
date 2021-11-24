@@ -1,7 +1,7 @@
 <div>
   <%= attachment_image_tag @book, :book %>
   <h1>Book detail<h1>
-    <p><%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+    <p><%= attachment_image_tag @book, :book, :fill, 60, 60, fallback: "no_image.jpg" %></p>
     <p><%= @book.user.name %></p>
     <p><%= @book.title %></p>
     <p><%= @book.body %></p>
@@ -10,3 +10,4 @@
     <% end %>
     
 </div>
+
