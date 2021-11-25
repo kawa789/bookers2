@@ -42,30 +42,27 @@
       </div>
       
       <div class="col-md-8 offset-md-1">
-        <h2>Books</h2>
-        <table class="table table-hover table-inverse">
+        <h2>Users</h2>
+        <table class="table">
           <thead>
             <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
+              <th>image</th>
+              <th>name</th>
               <th colspan="3"></th>
             </tr>
           </thead>
           
           <tbody>
-            <% @books.each do |book| %>
+            <% @users.each do |user| %>
             <tr>
               <td>
                 <p><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></p>
               </td>
               <td>
-                <%= link_to book_path(book.id) do %>
-                <p><%= book.title %></p>
-                <% end %>
+                <p><%= user.name %></p>
               </td>
               <td>
-                <p><%= book.body %></p>
+                <a href="/users">Show</a>
               </td>
             </tr>
             <% end %>
@@ -76,6 +73,5 @@
     </div>
   </div>
 </main>
-
 
 

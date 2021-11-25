@@ -21,7 +21,7 @@
           </tbody>
         </table>
         <div class="row">
-          <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_path(@user)"></a>
+          <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_path"></a>
         </div>
         <h2 class="mt-3">New Book</h2>
         <% if @book.errors.any? %>
@@ -47,7 +47,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td><%= attachment_image_tag @book, :book, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= @book.user.name %></td>
+              <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= @book.user.name %></td>
               <td><%= link_to book_path do %>
                   <p><%= @book.title %></p>
                   <% end %>
@@ -56,10 +56,10 @@
               
               <% if @book.user == current_user %>
               <td>
-                <a class="btn btn-sm btn-success >Edit</a>
+                <%=link_to "Edit",edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
               </td>
               <td>
-                <a data-confirm="本当に消しますか?" class="btn btn-sm btn-danger destroy_book" rel="nofollow" data-method="delete" href="/books">Destroy</a>
+                <%=link_to "Destroy",book_path(@book.id), class:"btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか?" %>
               </td>
               <% end %>
               
@@ -71,6 +71,3 @@
     </div>
   </div>
 </main>
-
-
-
