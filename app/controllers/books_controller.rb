@@ -10,11 +10,12 @@ class BooksController < ApplicationController
     if @book.save
        redirect_to books_path
     else
-      render :new
+      render :index
     end
   end
   
   def index
+    @user = current_user
     @book = Book.new
     @books = Book.all
   end
@@ -45,4 +46,9 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
   
+  def user_params
+    params.require(:user).permit(:name,:profile_image,:introduction)
+  end
+  
 end
+

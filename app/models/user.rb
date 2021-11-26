@@ -8,7 +8,16 @@ class User < ApplicationRecord
   
   attachment :profile_image
   
+  #ログインのところで追加
+  def email_required?
+   false
+  end
+  def email_changed?
+   false
+  end
+  
 end
+
 
 
 

@@ -47,7 +47,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= @book.user.name %></td>
+              <td><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= link_to user_path(@book.user_id) do %><%= @book.user.name %><% end %></td>
               <td><%= link_to book_path do %>
                   <p><%= @book.title %></p>
                   <% end %>
@@ -71,3 +71,4 @@
     </div>
   </div>
 </main>
+
