@@ -7,6 +7,3 @@ Rails.application.routes.draw do
   
   get "home/about" => "homes#index"
 end
-
-
-
