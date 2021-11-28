@@ -3,15 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :books, dependent: :destroy
-  
+
   validates :name, presence: true,
                    length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
-  
+
   attachment :profile_image
-  
+
   #ログインのところで追加
   def email_required?
    false
@@ -19,6 +19,8 @@ class User < ApplicationRecord
   def email_changed?
    false
   end
-  
+
 end
+
+
 

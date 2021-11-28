@@ -5,18 +5,27 @@
    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing Book</h1>
   		
-  		<%= form_with model:@user, local:true do |f| %>
+  		<% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <% @book.errors.full_messages.each do |message| %>
+       <%= message %>
+      <% end %>
+    <% end %>
+  		
+  		<%= form_with model:@book, local:true do |f| %>
     <form action="/books" accept-charset="UTF-8" method="post">
      <input name="utf8" type="hidden" value="✓">
      <input type="hidden" name="_method" value="patch">
      <input type="hidden" name="authenticity_token" value="122oxbRsNKNYtWsT7rhWgmRMWhx4ehFGfHj/jK3QwjDJHhxitVIoW5M1v4bDuqJBrgjDooDA84/DP7lIluAfQw==">
      <div class="form-group">
       <label for="book_title">Title</label>
-      <input class="form-control book_title" type="text" value="" name="book[title]" id="book_title">
+      <%= f.text_field :title,class:"col-xs-12" %>
+      <%#消した <input class="form-control book_title" type="text" value="" name="book[title]" id="book_title"> %>
      </div>
      <div class="form-group">
       <label for="book_opinion">Opinion</label>
-      <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
+       <%= f.text_area :body,class:"col-xs-12" %>
+      <%#消した <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea> %>
      </div>
      <div class="form-group">
       <input type="submit" name="commit" value="Update Book" class="btn btn-success" data-disable-with="Update Book">
@@ -30,3 +39,5 @@
   </div>
  </div>
 </main>
+
+
