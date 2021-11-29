@@ -1,13 +1,12 @@
-<main>
-  
+
+
   <% if @book.errors.any? %>
     <%= @book.errors.count %>error prohibited this obj from being saved:
     <% @book.errors.full_messages.each do |message| %>
       <%= message %>
     <% end %>
   <% end %>
-        
-  <p id="notice"></p>
+
   <div class="container px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
@@ -36,12 +35,10 @@
          <%= f.text_field :title %>
          <h4>Opinion</h4>
          <%= f.text_area :body %>
-         <div class="form-group">
-           <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
-         </div>
+         <%= f.submit "Create Book" %>
         <% end %>
       </div>
-      
+
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
         <table class="table table-hover table-inverse">
@@ -53,7 +50,7 @@
               <th colspan="3"></th>
             </tr>
           </thead>
-          
+
           <tbody>
             <% @books.each do |book| %>
             <tr>
@@ -75,10 +72,10 @@
           </tbody>
         </table>
       </div>
-      
+
     </div>
   </div>
-</main>
+
 
 
 
