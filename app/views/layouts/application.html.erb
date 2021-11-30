@@ -22,44 +22,36 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
-           <li>
-            <a class="fas fa-home nav-link text-light" href="/">
-             Home
-            </a>
-           </li>
+
            <% if user_signed_in? %>
            <li>
-            <a class="fas fa-users nav-link text-light" href="/users">
-             Users
-            </a>
+            <%= link_to "Home", user_path(current_user.id),class:"fas fa-home nav-link text-light" %>
            </li>
            <li>
-            <a class="fas fa-book-open nav-link text-light" href="/books">
-             Books
-            </a>
+            <%= link_to "Users", "/users",class:"fas fa-users nav-link text-light" %>
            </li>
            <li>
-            <a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
-             Log out
-            </a>
+            <%= link_to "Books", "/books",class:"fas fa-book-open nav-link text-light" %>
            </li>
+           <li>
+            <%= link_to "Log out", destroy_user_session_path,class:"fas fa-sign-out-alt nav-link text-light",method: :delete %>
+           </li>
+
            <% else %>
            <li>
-            <a class="fas fa-link nav-link text-light" href="/home/about">
-             About
-            </a>
+            <%= link_to "Home", "/",  class:"fas fa-home nav-link text-light" %>
            </li>
            <li>
-            <a class="fas fa-user-plus nav-link text-light" href="/users/sign_up">
-             Sign up
-            </a>
+            <%= link_to "About", "/home/about", class:"fas fa-link nav-link text-light" %>
            </li>
            <li>
-            <a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in">
-             Log in
-            </a>
+            <%= link_to "Sign up", "/users/sign_up", class:"fas fa-user-plus nav-link text-light" %>
+           </li>
+           <li>
+            <%= link_to"Log in", "/users/sign_in",  class:"fas fa-sign-in-alt nav-link text-light" %>
            </li>
            <% end %>
+
           </ul>
          </div>
         </div>
