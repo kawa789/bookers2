@@ -12,17 +12,17 @@
 
       <div class="col-md-3">
         <h2>User info</h2>
-        <img class="attachment user profile_image fallback" src="/assets/no_image.jpg">
+        <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" ,format: 'no_image.jpg' %>
         <table class="table">
           <tbody>
             <tr></tr>
             <tr>
               <th>name</th>
-              <th><%= @user.name %></th>
+              <th><%= @book.user.name %></th>
             </tr>
             <tr>
               <th>introduction</th>
-              <th><%= @user.introduction %></th>
+              <th><%= @book.user.introduction %></th>
               <th></th>
             </tr>
           </tbody>

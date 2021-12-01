@@ -122,7 +122,7 @@ Userモデルのテスト
 [32m      投稿の削除リンクが表示される[0m
     サイドバーの確認
 [32m      自分の名前と紹介文が表示される[0m
-[32m      自分のユーザ編集画面へのリンクが存在する[0m
+[31m      自分のユーザ編集画面へのリンクが存在する (FAILED - 1)[0m
 [32m      「New book」と表示される[0m
 [32m      titleフォームが表示される[0m
 [32m      titleフォームに値が入っていない[0m
@@ -188,16 +188,16 @@ Userモデルのテスト
 [32m      自己紹介編集フォームに自分の自己紹介文が表示される[0m
 [32m      Update Userボタンが表示される[0m
     更新成功のテスト
-[32m      nameが正しく更新される[0m
-[32m      introductionが正しく更新される[0m
-[32m      リダイレクト先が、自分のユーザ詳細画面になっている[0m
+[31m      nameが正しく更新される (FAILED - 2)[0m
+[31m      introductionが正しく更新される (FAILED - 3)[0m
+[31m      リダイレクト先が、自分のユーザ詳細画面になっている (FAILED - 4)[0m
 
 [STEP3] 仕上げのテスト
   サクセスメッセージのテスト
 [32m    ユーザ新規登録成功時[0m
 [32m    ユーザログイン成功時[0m
 [32m    ユーザログアウト成功時[0m
-[32m    ユーザのプロフィール情報更新成功時[0m
+[31m    ユーザのプロフィール情報更新成功時 (FAILED - 5)[0m
 [32m    投稿データの新規投稿成功時: 投稿一覧画面から行います。[0m
 [32m    投稿データの更新成功時[0m
   処理失敗時のテスト
@@ -208,7 +208,7 @@ Userモデルのテスト
     ユーザのプロフィール情報編集失敗: nameを1文字にする
 [32m      更新されない[0m
 [32m      ユーザ編集画面を表示しており、フォームの内容が正しい[0m
-[32m      バリデーションエラーが表示される[0m
+[31m      バリデーションエラーが表示される (FAILED - 6)[0m
     投稿データの新規投稿失敗: 投稿一覧画面から行い、titleを空にする
 [32m      投稿が保存されない[0m
 [32m      投稿一覧画面を表示している[0m
@@ -237,9 +237,9 @@ Userモデルのテスト
 [32m        投稿の削除リンクが表示されない[0m
       サイドバーの確認
 [32m        他人の名前と紹介文が表示される[0m
-[31m        他人のユーザ編集画面へのリンクが存在する (FAILED - 1)[0m
+[31m        他人のユーザ編集画面へのリンクが存在する (FAILED - 7)[0m
 [32m        自分の名前と紹介文は表示されない[0m
-[31m        自分のユーザ編集画面へのリンクは存在しない (FAILED - 2)[0m
+[31m        自分のユーザ編集画面へのリンクは存在しない (FAILED - 8)[0m
     他人の投稿編集画面
 [32m      遷移できず、投稿一覧画面にリダイレクトされる[0m
     他人のユーザ詳細画面のテスト
@@ -284,21 +284,69 @@ Userモデルのテスト
 
 Failures:
 
-  1) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する
+  1) [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する
+     [31mFailure/Error: [0m[32mexpect[0m(page).to have_link [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m, [35mhref[0m: edit_user_path(user)[0m
+     [31m  expected to find link "" with href "/users/2/edit" but there were no matches[0m
+     [36m# ./spec/system/02_after_login_spec.rb:143:in `block (4 levels) in <main>'[0m
+
+  2) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト nameが正しく更新される
+     [31mFailure/Error: [0m[32mexpect[0m(user.reload.name).not_to eq @user_old_name[0m
+     [31m[0m
+     [31m  expected: value != "ytbqvijgl0"[0m
+     [31m       got: "ytbqvijgl0"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/02_after_login_spec.rb:386:in `block (4 levels) in <main>'[0m
+
+  3) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト introductionが正しく更新される
+     [31mFailure/Error: [0m[32mexpect[0m(user.reload.introduction).not_to eq @user_old_intrpduction[0m
+     [31m[0m
+     [31m  expected: value != "60y0poutjwacetkj3f1z"[0m
+     [31m       got: "60y0poutjwacetkj3f1z"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/02_after_login_spec.rb:389:in `block (4 levels) in <main>'[0m
+
+  4) [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト リダイレクト先が、自分のユーザ詳細画面になっている
+     [31mFailure/Error: [0m[32mexpect[0m(current_path).to eq [31m[1;31m'[0m[31m/users/[1;31m'[0m[31m[0m + user.id.to_s[0m
+     [31m[0m
+     [31m  expected: "/users/2"[0m
+     [31m       got: "/users/2/edit"[0m
+     [31m[0m
+     [31m  (compared using ==)[0m
+     [36m# ./spec/system/02_after_login_spec.rb:392:in `block (4 levels) in <main>'[0m
+
+  5) [STEP3] 仕上げのテスト サクセスメッセージのテスト ユーザのプロフィール情報更新成功時
+     [31mFailure/Error: [0mis_expected.to have_content [31m[1;31m'[0m[31msuccessfully[1;31m'[0m[31m[0m[0m
+     [31m  expected to find text "successfully" in "Bookers\nHome Users Books Log out\nUser info\nName\nImage\nIntroduction 5inv16hyqkwpko19fh7l\nCopyRight Infratop.inc"[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:45:in `block (3 levels) in <main>'[0m
+
+  6) [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される
+     [31mFailure/Error: [0m[32mexpect[0m(page).to have_content [31m[1;31m"[0m[31mis too short (minimum is 2 characters)[1;31m"[0m[31m[0m[0m
+     [31m  expected to find text "is too short (minimum is 2 characters)" in "Bookers\nHome Users Books Log out\nUser info\nName\nImage\nIntroduction a3qdv55ic98mw67gyier\nCopyRight Infratop.inc"[0m
+     [36m# ./spec/system/03_finishing_touches_spec.rb:116:in `block (4 levels) in <main>'[0m
+
+  7) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する
      [31mFailure/Error: [0m[32mexpect[0m(page).to have_link [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m, [35mhref[0m: edit_user_path(other_user)[0m
      [31m  expected to find link "" with href "/users/1/edit" but there were no matches[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:248:in `block (5 levels) in <main>'[0m
 
-  2) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクは存在しない
+  8) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクは存在しない
      [31mFailure/Error: [0m[32mexpect[0m(page).not_to have_link [31m[1;31m'[0m[31m[1;31m'[0m[31m[0m, [35mhref[0m: edit_user_path(user)[0m
      [31m  expected not to find visible link "" with href "/users/2/edit", found 1 match: ""[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:255:in `block (5 levels) in <main>'[0m
 
-Finished in 17.39 seconds (files took 5.82 seconds to load)
-[31m198 examples, 2 failures[0m
+Finished in 18.25 seconds (files took 4.59 seconds to load)
+[31m198 examples, 8 failures[0m
 
 Failed examples:
 
+[31mrspec ./spec/system/02_after_login_spec.rb:142[0m [36m# [STEP2] ユーザログイン後のテスト 自分の投稿詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクが存在する[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:385[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト nameが正しく更新される[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:388[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト introductionが正しく更新される[0m
+[31mrspec ./spec/system/02_after_login_spec.rb:391[0m [36m# [STEP2] ユーザログイン後のテスト 自分のユーザ情報編集画面のテスト 更新成功のテスト リダイレクト先が、自分のユーザ詳細画面になっている[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:38[0m [36m# [STEP3] 仕上げのテスト サクセスメッセージのテスト ユーザのプロフィール情報更新成功時[0m
+[31mrspec ./spec/system/03_finishing_touches_spec.rb:115[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される[0m
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:247[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する[0m
 [31mrspec ./spec/system/03_finishing_touches_spec.rb:254[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 自分のユーザ編集画面へのリンクは存在しない[0m
 

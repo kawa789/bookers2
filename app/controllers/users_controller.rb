@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
+  before_action :ensure_current_user, only: [:edit,:update]
 
   def index
     #@user = User.new
@@ -43,9 +43,6 @@ class UsersController < ApplicationController
 
   private
 
-  def book_params
-      params.require(:book).permit(:title, :body)
-  end
 
   def user_params
       params.require(:user).permit(:name, :profile_image, :introduction)
