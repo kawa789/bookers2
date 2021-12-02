@@ -294,7 +294,7 @@ Failures:
      [31m  expected not to find visible link "" with href "/users/2/edit", found 1 match: ""[0m
      [36m# ./spec/system/03_finishing_touches_spec.rb:255:in `block (5 levels) in <main>'[0m
 
-Finished in 17.39 seconds (files took 5.82 seconds to load)
+Finished in 17.71 seconds (files took 9.28 seconds to load)
 [31m198 examples, 2 failures[0m
 
 Failed examples:
