@@ -4,10 +4,11 @@ class UsersController < ApplicationController
 
   def index
     #@user = User.new
+    @book = current_user #追加
     @users = User.all
-    @books = Book.all      #追加
-    @book = Book.new       #追加
-    @user = current_user   #追加
+    @books = Book.all
+    @book_new = Book.new
+    @user = current_user
   end
 
   def create
@@ -21,9 +22,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @book = Book.new
+    @book_new = Book.new
     @user = User.find(params[:id])
     @books = @user.books
+    @book = current_user
   end
 
   def edit

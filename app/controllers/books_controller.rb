@@ -21,8 +21,9 @@ class BooksController < ApplicationController
 
   def index
     @user = current_user
-    @book = Book.new
+    @book_new = Book.new
     @books = Book.all
+    @book = current_user
   end
 
   def show
@@ -56,7 +57,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def  ensure_current_user
       @book = Book.find(params[:id])
      if @book.user_id != current_user.id
